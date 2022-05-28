@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./components/NavBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ItemListContainer from "./components/ItemListContainer";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Primera clase de ReactJs
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          React
-        </a>
-      </header>
+    <div>
+    <NavBar />
+    <ItemListContainer mostrarAlgo={"No se que poner aqui :P"}/>
     </div>
-  );
+  )
 }
 
 export default App;
