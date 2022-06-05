@@ -4,10 +4,15 @@ import ItemListContainer from "./components/ItemListContainer";
 
 
 function App() {
+
+  const onAdd = (count) => {
+    alert(`sumaste ${count} al carrito`)
+  }
+
   return (
     <div>
     <NavBar />
-    <ItemListContainer mostrarAlgo={"No se que poner aqui :P"}/>
+    <ItemListContainer cantInicial={1} stock={15} onAdd={onAdd}></ItemListContainer>
     </div>
   )
 }
