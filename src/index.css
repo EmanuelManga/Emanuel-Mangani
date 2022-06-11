@@ -20,3 +20,17 @@ code {
   .botonCarrito{
   width: max-content !important;
   }
+
+  .contenedor{
+    /* background-color: blue; */
+  }
+
+  .contenedor2{
+    background-color:rgba(233, 150, 122, 0.452);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100vh;
+    align-items: center;
+    justify-items: center; /* ajusta */
+    
+  }

@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
     <NavBar />
-    <ItemListContainer cantInicial={1} stock={15} onAdd={onAdd}></ItemListContainer>
+    <ItemListContainer cantInicial={1} onAdd={onAdd}></ItemListContainer>
     </div>
   )
 }
