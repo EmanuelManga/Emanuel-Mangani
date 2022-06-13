@@ -12,6 +12,7 @@ export default function ItemListContainer({cantInicial,onAdd}) {
     // const [loading,setLoading]= useState(true);
     const [error,setError]= useState(false);
     const [resultado,setResultado]= useState([]);
+    const [resultadoAux,setResultadoAux]= useState([]);
 
     const handelerStock = (id,contItem) => {
         let auxId = resultado.findIndex((obj => obj.id === id));
@@ -71,10 +72,11 @@ export default function ItemListContainer({cantInicial,onAdd}) {
             return response.json();
         })
         .then(function(user){
+            setResultadoAux(user)
             setResultado(user)
             if(id!=undefined){
                 console.log("2")
-                const filteredCategory = resultado.filter((item)=>item.categoria === id)
+                const filteredCategory = resultadoAux.filter((item)=>item.categoria === id)
                 setResultado(filteredCategory);
             }
         })
