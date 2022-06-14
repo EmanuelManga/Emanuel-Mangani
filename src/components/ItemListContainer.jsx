@@ -74,7 +74,7 @@ export default function ItemListContainer({cantInicial,onAdd}) {
         .then(function(user){
             setResultadoAux(user)
             setResultado(user)
-            if(id!=undefined){
+            if(id!==undefined){
                 console.log("2")
                 const filteredCategory = resultadoAux.filter((item)=>item.categoria === id)
                 setResultado(filteredCategory);

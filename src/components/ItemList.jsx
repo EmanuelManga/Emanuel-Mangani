@@ -13,7 +13,7 @@ export default function ItemList({cantInicial,error,loading,resultado,onAdd,hand
 
     return (
         <>
-        {/* <div>{loading && 'Loading...'}</div> */}
+        <div>{loading && 'Loading...'}</div>
         <div>{error && 'Hubo un error en el pago'}</div> 
         <div className='contenedor2'>
             <Row>
