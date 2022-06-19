@@ -5,9 +5,23 @@ import Nosotros from "./Nosotros";
 import Home from "./Home";
 import Sucursales from "./Sucursales";
 import CartWidget from "./CartWidget";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Cart from './Cart';
 
 
 export default function NavBar() {
+
+    const [navLink, setNavLink] = useState([]);
+
+    useEffect(()=>{
+        fetch('https://my-json-server.typicode.com/EmanuelManga/JsonLibros/lista')
+        .then(respuesta => respuesta.json())
+        .then(parsedArray => parsedArray.map(x => x.categoria))
+        .then(uniqueArray => setNavLink([...new Set(uniqueArray)]))
+    })
+
+
     return (
         <>
             <div>
@@ -23,10 +37,14 @@ export default function NavBar() {
                     >
                     <Nav.Link as={Link} to={"/home"}>Emanuel</Nav.Link>
                     <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
-                    <Nav.Link as={Link} to={"/nosotros"}>Nosotros</Nav.Link>
-                    <Nav.Link as={Link} to={"/sucursales"}>Sucursales</Nav.Link>
-                    <Nav.Link as={Link} to={"/Category/Epopeya"}>Epopeya</Nav.Link>
-                    <Nav.Link as={Link} to={"/Category/Fantasia"}>Fantasia</Nav.Link>
+                    <Nav.Link as={Link} to={"/Cart"}>Cart</Nav.Link>
+                    {/* <Nav.Link as={Link} to={"/nosotros"}>Nosotros</Nav.Link>
+                    <Nav.Link as={Link} to={"/sucursales"}>Sucursales</Nav.Link> */}
+                    {/* <Nav.Link as={Link} to={"/Category/Epopeya"}>Epopeya</Nav.Link>
+                    <Nav.Link as={Link} to={"/Category/Fantasia"}>Fantasia</Nav.Link> */}
+                    {navLink.map((element,index)=>{
+                        return<Nav.Link as={Link} to={`/Category/${element}`} key={index} >{element}</Nav.Link>
+                    })}
 
                     </Nav>
                     <Form className="d-flex">

@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import {Button,Card,Col} from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import { MiContexto } from '../context/CartContext';
+import { useContext } from 'react';
 
+export default function ItemCount({itemDet,handelerStock}) {
 
-export default function ItemCount({item,cantInicial,onAdd,handelerStock}) {
-
+    const {onAdd,cantInicial,addItem} = useContext(MiContexto)
+    
+    
     const [contItem,setContItem] = useState(cantInicial)
-
-
-
 
     const sumar = (stock) =>{
         if(contItem < stock)
@@ -29,7 +30,7 @@ export default function ItemCount({item,cantInicial,onAdd,handelerStock}) {
     const agregarCarrito = (stock,id)=>{
         if(stock>=contItem){
             onAdd(contItem);
-            handelerStock(id,contItem)
+            addItem(itemDet,contItem);
             // setContCarrito(contCarrito - contItem)
             // reset();
         }
@@ -37,37 +38,23 @@ export default function ItemCount({item,cantInicial,onAdd,handelerStock}) {
             alert("No hay suficiente Stock")
         }
         
+        handelerStock(id,contItem)
+        reset()
     }
 
 
     return (
         <>
-        <Col  md="auto">
-        {/* <Button onClick={log(item.stock)}></Button> */}
-            <Card style={{ width: '18rem', height: '28rem' }}>
-                <Card.Img variant="top" style={{ width: '30%', height: '400%' }} src={item.img} />
-                <Card.Body>
-                    <Card.Title>{item.nombre}</Card.Title>
-                    {/* <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    </Card.Text> */}
-                    <Card.Text>${item.precio}</Card.Text>
-                    <Card.Text>Stock: {item.stock}</Card.Text>
                     <Card.Text>{contItem}</Card.Text>
+                    <Card.Text>Stock: {itemDet.stock}</Card.Text>
                     <Button variant="primary" className='me-2 buttonSub'onClick ={restar}> - </Button>
-                    <Button   variant="primary" className='me-2 buttonAdd'  onClick ={()=>sumar(item.stock)}> + </Button>
+                    <Button   variant="primary" className='me-2 buttonAdd'  onClick ={()=>sumar(itemDet.stock)}> + </Button>
+                    <Button   variant="primary" className='me-2 buttonAdd'  onClick ={()=>addItem(itemDet,contItem)}> * </Button>
                     <br />
                     {/* <Button variant="primary" onClick={()=> {;reset()}}>Agregar al carrito</Button> */}
-                    <Button variant="primary" onClick={()=>agregarCarrito(item.stock,item.id)}>Agregar al carrito </Button>
-                    <br/>
-                    <Link to={'/ItemDetailConteiner/'+item.id}>
-                        <Button variant="primary">Detalles</Button>
+                    <Link to={"/Cart"} >
+                        <Button variant="primary" onClick={()=>agregarCarrito(itemDet.stock,itemDet.id)}>Agregar al carrito </Button>
                     </Link>
-                    
-                </Card.Body>
-            </Card> 
-        </Col>
         </>
     )
 }

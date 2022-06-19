@@ -1,12 +1,14 @@
 import React from 'react'
 import {Button, Card} from "react-bootstrap";
 import {useParams} from 'react-router-dom';
-
-export default function ItemDetail({itemDet}) {
-
+import ItemCount from './ItemCount';
 
 
-    console.log(itemDet)
+export default function ItemDetail({itemDet,handelerStock}) {
+
+
+
+    // console.log(itemDet)
     return (
         <>
         <Card.Img variant="top" style={{ width: '9rem', height: '13rem' }} src= {itemDet.img}  />
@@ -17,7 +19,8 @@ export default function ItemDetail({itemDet}) {
             the card's content.
             </Card.Text>
             <Card.Text>${itemDet.precio}</Card.Text>
-            <Card.Text>Stock: {itemDet.stock}</Card.Text>
+            {/* <Card.Text>Stock: {itemDet.stock}</Card.Text> */}
+            <ItemCount itemDet={itemDet} handelerStock={handelerStock} ></ItemCount>
         </Card.Body>
     </> 
     )

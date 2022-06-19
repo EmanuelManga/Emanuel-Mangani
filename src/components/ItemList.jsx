@@ -2,13 +2,13 @@ import React from 'react'
 import {Row} from "react-bootstrap";
 import Item from './Item';
 
-export default function ItemList({cantInicial,error,loading,resultado,onAdd,handelerStock}) {
+export default function ItemList({error,loading,resultado}) {
 
     // const log = (x)=>{
     //     console.log(x)
     // }
 
-    console.log('resultado',resultado)
+    // console.log('resultado',resultado)
 
 
     return (
@@ -19,7 +19,7 @@ export default function ItemList({cantInicial,error,loading,resultado,onAdd,hand
             <Row>
             {resultado &&
             resultado.map((item) => (
-                <Item item={item} cantInicial={cantInicial} onAdd={onAdd} handelerStock={handelerStock} > </Item>
+                <Item item={item}  > </Item>
                 ))}
             </Row>
         </div>
