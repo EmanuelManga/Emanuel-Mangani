@@ -14,15 +14,7 @@ export default function ItemListContainer() {
     const [resultado,setResultado]= useState([]);
 
 
-    // const handelerStock = (id,contItem) => {
-    //     let auxId = resultado.findIndex((obj => obj.id === id));
-    //     resultado[auxId].stock =  resultado[auxId].stock - contItem
-    //     console.log(resultado.findIndex((obj => obj.id === id)))
-    //     console.log(resultado)
-    //     setResultado(resultado)
-    // }
 
-    // console.log("id",id)
 
 
     useEffect(()=>{

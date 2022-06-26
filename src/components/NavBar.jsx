@@ -55,7 +55,9 @@ export default function NavBar() {
                         aria-label="Search"
                     />
                     <Button variant="success" className="me-3">Buscar</Button>
-                    <CartWidget cuantosProd={4} ></CartWidget>
+                    <Link to={"/Cart"} >
+                        <CartWidget ></CartWidget>
+                    </Link>
                     </Form>
                 </Navbar.Collapse>
                 </Container>

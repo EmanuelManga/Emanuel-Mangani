@@ -12,7 +12,7 @@ export default function Item({item}) {
         <Col  md="auto">
         {/* <Button onClick={log(item.stock)}></Button> */}
             <Card style={{ width: '18rem', height: '28rem' }}>
-                <Card.Img variant="top" style={{ width: '30%', height: '400%' }} src={item.img} />
+                <Card.Img variant="top" style={{width: '6rem' }} src={item.img} />
                 <Card.Body>
                     <Card.Title>{item.nombre}</Card.Title>
                     {/* <Card.Text>

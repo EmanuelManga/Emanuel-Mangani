@@ -34,3 +34,47 @@ code {
     justify-items: center; /* ajusta */
     
   }
+
+  .flexColumn{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    flex-wrap: wrap!important;
+    align-content: center!important;
+    
+
+  }
+
+  .contenedorCarrito{
+    /* margin:.5rem 1rem !important;
+    width: 40rem !important;
+    height: 10rem !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 10fr) !important;
+    grid-gap: 10px !important;
+    align-content: center !important; */
+
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-content: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    width: 55rem !important;
+    height: 10rem !important;
+
+
+    background-color: lightblue !important;
+    margin: .5rem 0rem !important;
+
+    
+
+  }
+
+  .cardBodyCarrito{
+    grid-row: 1;
+    grid-column: 2/4;
+    margin: auto auto;
+
+  }

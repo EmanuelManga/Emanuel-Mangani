@@ -6,17 +6,17 @@ import { useContext } from 'react';
 
 export default function ItemCount({itemDet,handelerStock}) {
 
-    const {onAdd,cantInicial,addItem} = useContext(MiContexto)
+    const {onAdd,cantInicial,addItem,sumar} = useContext(MiContexto)
     
     
     const [contItem,setContItem] = useState(cantInicial)
 
-    const sumar = (stock) =>{
-        if(contItem < stock)
-            setContItem(contItem+1);
-        else
-            alert("Alcansaste Stock maximo")
-    }
+    // const sumar = (stock) =>{
+    //     if(contItem < stock)
+    //         setContItem(contItem+1);
+    //     else
+    //         alert("Alcansaste Stock maximo")
+    // }
 
     const restar = () =>{
         if(contItem >cantInicial)
@@ -42,14 +42,14 @@ export default function ItemCount({itemDet,handelerStock}) {
         reset()
     }
 
+    console.log('count')
 
     return (
         <>
                     <Card.Text>{contItem}</Card.Text>
                     <Card.Text>Stock: {itemDet.stock}</Card.Text>
                     <Button variant="primary" className='me-2 buttonSub'onClick ={restar}> - </Button>
-                    <Button   variant="primary" className='me-2 buttonAdd'  onClick ={()=>sumar(itemDet.stock)}> + </Button>
-                    <Button   variant="primary" className='me-2 buttonAdd'  onClick ={()=>addItem(itemDet,contItem)}> * </Button>
+                    <Button   variant="primary" className='me-2 buttonAdd'  onClick ={()=>setContItem(sumar(itemDet.stock,contItem))}> + </Button>
                     <br />
                     {/* <Button variant="primary" onClick={()=> {;reset()}}>Agregar al carrito</Button> */}
                     <Link to={"/Cart"} >
