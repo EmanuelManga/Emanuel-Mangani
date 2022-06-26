@@ -1,19 +1,28 @@
 //@ts-check
-import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ItemListContainer from "./components/ItemListContainer";
+import { initializeApp } from "firebase/app";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Cart from "./components/Cart";
 import ItemDetailContainer from "./components/ItemDetailContainer";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
-import Home from "./components/Home";
+import ItemListContainer from "./components/ItemListContainer";
+import NavBar from "./components/NavBar";
 import Nosotros from "./components/Nosotros";
 import Sucursales from "./components/Sucursales";
-import Cart from "./components/Cart";
 import CartContext from "./context/CartContext";
-import { toBeChecked } from "@testing-library/jest-dom/dist/matchers";
 
 
 function App() {
-
+  
+  
+  
+  initializeApp({
+    apiKey: "AIzaSyBiDqkL4KOjGTuCyda2FTv5f9j_liszMUo",
+    authDomain: "librosecomers.firebaseapp.com",
+    projectId: "librosecomers",
+    storageBucket: "librosecomers.appspot.com",
+    messagingSenderId: "693794814407",
+    appId: "1:693794814407:web:b2e5e896108aa5faf7c1e2"
+  });
 
 
   return (
@@ -32,7 +41,7 @@ function App() {
       <Route path="/Cart" element={<Cart/>}/>
     </Routes>
     </BrowserRouter>
-
+-
     </CartContext>
     </>
   )
