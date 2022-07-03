@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 export default function Cart() {
 
-const {carritoVacio,carrito,clear,removeItem,sumarCarrito,setCarrito,costoTotal,sumaTotal,restarCarrito} = useContext(MiContexto)
+const {productosTotal,sumaProductos,carritoVacio,carrito,clear,removeItem,sumarCarrito,setCarrito,costoTotal,sumaTotal,restarCarrito} = useContext(MiContexto)
 
     console.log("carrito",carrito.lenght)
 
@@ -15,6 +15,7 @@ const {carritoVacio,carrito,clear,removeItem,sumarCarrito,setCarrito,costoTotal,
     const subTotal = (item)=>{
         return item.precio * item.cantidad
     }
+
 
     if(carritoVacio)
     return(
@@ -40,23 +41,26 @@ const {carritoVacio,carrito,clear,removeItem,sumarCarrito,setCarrito,costoTotal,
                         <Card.Title>{item.nombre}</Card.Title>
                         <Card.Text>${item.precio}</Card.Text>
                     </Card.Body>
-                    <Card.Body style={{display: 'flex', flexDirection: 'row',alignItems:'baseline',flexWrap:'wrap',alignContent:'space-around',justifyContent:'space-between',width:'15%'}}> 
+                    <Card.Body style={{display: 'flex', flexDirection: 'row',alignItems:'baseline',flexWrap:'wrap',alignContent:'space-between',justifyContent:'space-between',width:'15%'}}> 
                         <Button  variant="danger" className='me-2 buttonAdd'  onClick ={()=>restarCarrito(item)}> - </Button>
                         <Card.Text >{item.cantidad}</Card.Text>
-                        {/* <Button  variant="primary" className='me-2 buttonAdd'  onClick ={()=>setCarrito(sumarCarrito(item))}> + </Button> */}
                         <Button  variant="primary" className='me-2 buttonAdd'  onClick ={()=>sumarCarrito(item)}> + </Button>
                         <Button  variant="warning" className='me-2 buttonAdd'  onClick ={()=>removeItem(item.id)}> X </Button>
                     </Card.Body>
                     <Card.Body>
                         <Card.Text >Subtotal: ${item.precio*item.cantidad}</Card.Text>
                         <Card.Text >Subtotal: ${subTotal(item)}</Card.Text>
+                        
                     </Card.Body>
                 </Card> 
             ))}
         </Row>
         <Button   variant="primary" className='me-2 buttonAdd'  onClick ={()=>clear()}> Limpiar Carrito</Button>
         <p>Total: ${costoTotal}</p>
-        <Button   variant="primary" className='me-2 buttonAdd'  > Terminar la compra</Button>
+        {sumaTotal()}
+        <Link to={"/Checkout"} >
+            <Button   variant="primary" className='me-2 buttonAdd'  > Terminar la compra</Button>
+        </Link>
         </>
     )
 }

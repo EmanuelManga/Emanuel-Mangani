@@ -18,9 +18,7 @@ export default function CartContext({children}) {
     }
     
     const addItem = (item, quantity)=>{
-        if (isInCart(item)===true){
-            // item = carrito.find(obj => obj.id === item.id)
-            // item.cantidad=item.cantidad+quantity;
+        if (isInCart(item)){
             let auxId = carrito.findIndex((obj => obj.id === item.id));
             carrito[auxId].cantidad = carrito[auxId].cantidad + quantity;
             setCarrito(carrito);
@@ -28,23 +26,21 @@ export default function CartContext({children}) {
         }
         else{
             item.cantidad = item.cantidad + quantity;
-            setCarrito(carrito =>[...carrito,item])
-            sumaTotal();
+            setCarrito([...carrito,item])
         }
+        sumaTotal();
         console.log("antes del state",carrito)
         setCarritoVacio(false)
         
     }
 
     const removeItem = (id) => {
-        // let auxId = carrito.findIndex((obj => obj.id === id));
         let auxId = carrito.filter((obj => obj.id !== id));
         setCarrito(auxId)
         sumaTotal();
     }
 
     const clear = () =>{
-        // setCarrito(carrito.splice(0,carrito.length))
         setCarrito([])
         setCarritoVacio(true)
         setCostoTotal(0)
@@ -63,10 +59,20 @@ export default function CartContext({children}) {
 
     const sumar = (stock,contItem) =>{
         if(contItem < stock)
-            // setContItem(contItem+1);
             return(contItem+1);
-        else
+        else{
             alert("Alcansaste Stock maximo")
+            return(contItem)
+        }
+    }
+
+    const restar = (contItem) =>{
+        if(contItem >cantInicial)
+        return(contItem-1);
+    }
+
+    const reset = () =>{
+        return(cantInicial)
     }
 
     const sumarCarrito = (item)=>{
@@ -74,7 +80,6 @@ export default function CartContext({children}) {
             let auxId = carrito.findIndex((obj => obj.id === item.id));
             carrito[auxId].cantidad = carrito[auxId].cantidad + 1;
             carrito[auxId].stock = carrito[auxId].stock - 1;
-            // return carrito;
             console.log("despues del state 2 ",carrito)
             setCarrito(carrito)
         }
@@ -89,7 +94,6 @@ export default function CartContext({children}) {
             let auxId = carrito.findIndex((obj => obj.id === item.id));
             carrito[auxId].cantidad = carrito[auxId].cantidad - 1;
             carrito[auxId].stock = carrito[auxId].stock + 1;
-            // return carrito;
             setCarrito(carrito)
         }
         else{
@@ -99,33 +103,17 @@ export default function CartContext({children}) {
     }
 
     const sumaTotal = ()=>{
-        let tot = 0
-        carrito.forEach(item=>{
-            let sub = 0
-            sub = item.precio*item.cantidad;
-            tot = tot + sub
-            console.log('sum',costoTotal)
-        })
-        setCostoTotal(tot)
-        sumaProductos()
+        setCostoTotal(carrito.reduce((acc,item) => (acc += item.precio * item.cantidad),0))
+        return setCostoTotal(carrito.reduce((acc,item) => (acc += item.precio * item.cantidad),0));
     }
-
 
     const sumaProductos = () =>{
-        let totProd=0
-        carrito.forEach(item=>{
-            let sub = 0
-            sub = item.cantidad;
-            totProd = totProd + sub
-            
-        })
-        setProductosTotal(totProd)
+        setProductosTotal(carrito.reduce((acc,item) => (acc + item.cantidad),0))
+        return carrito.reduce((acc,item) => (acc + item.cantidad),0) ;
     }
-    
 
 
-    console.log("despues del state",carrito)
     return (
-    <MiContexto.Provider value={{productosTotal,carritoVacio,carrito,setCarrito,onAdd,cantInicial,isInCart,addItem,clear,removeItem,sumar,sumarCarrito,sumaTotal,costoTotal,restarCarrito}} >{children}</MiContexto.Provider>
+    <MiContexto.Provider value={{setCarritoVacio,sumaProductos,productosTotal,carritoVacio,carrito,setCarrito,onAdd,cantInicial,isInCart,addItem,clear,removeItem,sumar,restar,reset,sumarCarrito,sumaTotal,costoTotal,restarCarrito}} >{children}</MiContexto.Provider>
     )
 }

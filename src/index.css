@@ -46,13 +46,6 @@ code {
   }
 
   .contenedorCarrito{
-    /* margin:.5rem 1rem !important;
-    width: 40rem !important;
-    height: 10rem !important;
-    display: grid !important;
-    grid-template-columns: repeat(4, 10fr) !important;
-    grid-gap: 10px !important;
-    align-content: center !important; */
 
     display: flex !important;
     flex-direction: row !important;
@@ -76,5 +69,8 @@ code {
     grid-row: 1;
     grid-column: 2/4;
     margin: auto auto;
-
   }
+
+.buttonAdd{
+  margin: 0px 8px !important;
+}

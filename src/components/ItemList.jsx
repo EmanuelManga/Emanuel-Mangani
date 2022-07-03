@@ -10,11 +10,17 @@ export default function ItemList({error,loading,resultado}) {
 
     // console.log('resultado',resultado)
 
+    if(loading){
+        return<div>Loading...</div>
+    }
+    // console.log(itemDet)
+    if(error){
+        return <div> Hubo un error en la carga de productos</div> 
+    }
+
 
     return (
         <>
-        <div>{loading && 'Loading...'}</div>
-        <div>{error && 'Hubo un error en el pago'}</div> 
         <div className='contenedor2'>
             <Row>
             {resultado &&

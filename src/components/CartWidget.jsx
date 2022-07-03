@@ -7,15 +7,16 @@ import {useContext} from 'react';
 
 export default function CartWidget() {
 
-    const {productosTotal} = useContext(MiContexto)
+    const {sumaProductos,productosTotal} = useContext(MiContexto)
 
 
 
     return (
         <InputGroup className='botonCarrito'>
-                <Button variant="outline-secondary">
+                <Button variant="outline-secondary" style={{textDecorationLine:"none"}}>
                 <BsCart className='me-2'></BsCart>
-                {productosTotal}
+                {sumaProductos()}
+                {/* {productosTotal} */}
                 </Button>
             </InputGroup>
     )

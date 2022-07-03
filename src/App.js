@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { initializeApp } from "firebase/app";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cart from "./components/Cart";
+import CheckOut from "./components/CheckOut";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";
@@ -39,9 +40,9 @@ function App() {
       <Route path="/ItemDetailConteiner/:id" element={<ItemDetailContainer  />}/>
       <Route path="/Category/:id" element={<ItemListContainer   />}/>
       <Route path="/Cart" element={<Cart/>}/>
+      <Route path="/Checkout" element={<CheckOut/>}/>
     </Routes>
     </BrowserRouter>
--
     </CartContext>
     </>
   )

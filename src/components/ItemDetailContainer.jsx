@@ -14,11 +14,7 @@ export default function ItemDetailContainer() {
         const [itemDet,setItemDet]= useState([]);
 
     const handelerStock = (id,contItem) => {
-        // let auxId = itemDet.findIndex((obj => obj.id === id));
-        // itemDet[auxId].stock =  itemDet[auxId].stock - contItem
-        // console.log(itemDet.findIndex((obj => obj.id === id)))
         itemDet.stock = itemDet.stock - contItem;
-        // console.log("handelerStock itemdetcont",itemDet)
         setItemDet(itemDet)
     }
 
@@ -31,7 +27,6 @@ export default function ItemDetailContainer() {
         .then((snapshot)=>{
             const filtered = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()})).find(item=>item.id === id)
             setItemDet(filtered);
-            // console.log('else',snapshot.docs.map(doc => ({id: doc.id, ...doc.data()})))
         })
         .catch((error)=>{
             setError(error);
@@ -62,9 +57,7 @@ export default function ItemDetailContainer() {
 
     return (
         <>
-        {/* {itemDet && itemDet.filter((itemDet)=> itemDet.id === getId ( */}
-        <ItemDetail itemDet={itemDet} handelerStock={handelerStock}></ItemDetail>
-        {/* * ))} */}
+        <ItemDetail itemDet={itemDet} handelerStock={handelerStock} error={error} loading={loading}></ItemDetail>
         </>
     )
 }

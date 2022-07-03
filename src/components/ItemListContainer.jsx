@@ -101,7 +101,7 @@ export default function ItemListContainer() {
 
         <>
         <div className='contenedor'>
-        <ItemList resultado={resultado} >  </ItemList>
+        <ItemList resultado={resultado} error={error} loading={loading} >  </ItemList>
         </div>
         </>
     )

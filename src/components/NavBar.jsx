@@ -25,7 +25,7 @@ export default function NavBar() {
     return (
         <>
             <div>
-            <Navbar bg="dark" variant={"dark"} expand="lg">
+            <Navbar bg="dark" variant={"dark"} expand="lg" >
                 <Container fluid>
                 {/* <Navbar.Link href="/home">Emanuel</Navbar.Link> */}
                 <Navbar.Toggle aria-controls="navbarScroll" />
