@@ -22,7 +22,7 @@ export default function ItemList({error,loading,resultado}) {
     return (
         <>
         <div className='contenedor2'>
-            <Row>
+            <Row className='row1'>
             {resultado &&
             resultado.map((item) => (
                 <Item item={item}  > </Item>

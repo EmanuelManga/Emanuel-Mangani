@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
-import {useLocation, useParams} from 'react-router-dom';
-import Item from './Item';
-import {getDocs, collection, getFirestore} from 'firebase/firestore';
 
 export default function ItemDetailContainer() {
     
@@ -37,27 +36,11 @@ export default function ItemDetailContainer() {
     },[id])
 
 
-    // useEffect(()=>{
-    //     fetch('https://my-json-server.typicode.com/EmanuelManga/JsonLibros/lista')
-    //     .then(function(response){
-    //         return response.json();
-    //     })
-    //     .then(function(user){
-    //             const filtered = user.find(item=>item.id === id)
-    //             setItemDet(filtered)
-    //             // console.log("awdawd",filtered);
 
-    //     })
-    //     .catch((error)=>{
-    //         setError(error);
-    //     })
-    // },[id]);
-
-    // console.log("itemdet",itemDet);
 
     return (
         <>
-        <ItemDetail itemDet={itemDet} handelerStock={handelerStock} error={error} loading={loading}></ItemDetail>
+        <ItemDetail itemDet={itemDet} handelerStock={handelerStock} error={error} loading={loading} ></ItemDetail>
         </>
     )
 }

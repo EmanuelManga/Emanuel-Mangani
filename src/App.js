@@ -1,4 +1,4 @@
-//@ts-check
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import { initializeApp } from "firebase/app";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -40,7 +40,7 @@ function App() {
       <Route path="/ItemDetailConteiner/:id" element={<ItemDetailContainer  />}/>
       <Route path="/Category/:id" element={<ItemListContainer   />}/>
       <Route path="/Cart" element={<Cart/>}/>
-      <Route path="/Checkout" element={<CheckOut/>}/>
+      <Route path="/CheckOut" element={<CheckOut/>}/>
     </Routes>
     </BrowserRouter>
     </CartContext>

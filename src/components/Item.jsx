@@ -9,21 +9,15 @@ export default function Item({item}) {
     
     return (
         <>
-        <Col  md="auto">
-        {/* <Button onClick={log(item.stock)}></Button> */}
-            <Card style={{ width: '18rem', height: '28rem' }}>
-                <Card.Img variant="top" style={{width: '6rem' }} src={item.img} />
-                <Card.Body>
-                    <Card.Title>{item.nombre}</Card.Title>
-                    {/* <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    </Card.Text> */}
-                    <Card.Text>${item.precio}</Card.Text>
-                    <Card.Text>Stock{item.stock}</Card.Text>
-                    {/* <ItemCount item={item} cantInicial={cantInicial} onAdd={onAdd} handelerStock={handelerStock}></ItemCount> */}
-                    <Link to={'/ItemDetailConteiner/'+item.id} >
-                        <Button variant="primary">Detalles</Button>
+        <Col  md="auto" style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+            <Card className='tarjeta' style={{ width: '18rem', height: '28rem' }}>
+                <Card.Img variant="top" style={{width: '9rem',height:"50%", margin:"auto",paddingTop:"5%"  }} src={item.img} />
+                <Card.Body style={{display:"flex", flexDirection:"column"}}>
+                    <Card.Title >{item.nombre}</Card.Title>
+                    <Card.Text  style={{margin:"auto"}}>${item.precio}</Card.Text>
+                    <Card.Text  style={{margin:"auto"}}>Stock{item.stock}</Card.Text>
+                    <Link to={'/ItemDetailConteiner/'+item.id}  style={{margin:"auto"}}>
+                        <Button  variant="primary ">Detalles</Button>
                     </Link>
                 </Card.Body>
             </Card> 

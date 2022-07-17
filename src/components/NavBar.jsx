@@ -25,55 +25,71 @@ export default function NavBar() {
     return (
         <>
             <div>
-            <Navbar bg="dark" variant={"dark"} expand="lg" >
+            
+                <Navbar collapseOnSelect expand="lg" bg="dark" fixed="top"  variant={"dark"}  >
                 <Container fluid>
-                {/* <Navbar.Link href="/home">Emanuel</Navbar.Link> */}
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
+                <Navbar.Brand href="#home" as={Link} to={"/home"}>E-Book</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse   id="responsive-navbar-nav">
                     <Nav
-                    className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: "100px" }}
+                    className="me-auto  my-2 my-lg-0"
                     navbarScroll
                     >
-                    <Nav.Link as={Link} to={"/home"}>Emanuel</Nav.Link>
-                    <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
-                    <Nav.Link as={Link} to={"/Cart"}>Cart</Nav.Link>
-                    {/* <Nav.Link as={Link} to={"/nosotros"}>Nosotros</Nav.Link>
-                    <Nav.Link as={Link} to={"/sucursales"}>Sucursales</Nav.Link> */}
-                    {/* <Nav.Link as={Link} to={"/Category/Epopeya"}>Epopeya</Nav.Link>
-                    <Nav.Link as={Link} to={"/Category/Fantasia"}>Fantasia</Nav.Link> */}
+                    <Nav.Link href="#home" as={Link} to={"/home"}>Home</Nav.Link>
                     {navLink.map((element,index)=>{
-                        return<Nav.Link as={Link} to={`/Category/${element}`} key={index} >{element}</Nav.Link>
+                        return<Nav.Link href="#cat" as={Link} to={`/Category/${element}`} key={index} >{element}</Nav.Link>
                     })}
-
                     </Nav>
-                    <Form className="d-flex">
-                    <FormControl
-                        type="search"
-                        placeholder="Buscar"
-                        className="me-3 barraBusqueda"
-                        aria-label="Search"
-                    />
-                    <Button variant="success" className="me-3">Buscar</Button>
-                    <Link to={"/Cart"} >
+                    <Link href="#cart" to={"/Cart"} >
                         <CartWidget ></CartWidget>
                     </Link>
-                    </Form>
                 </Navbar.Collapse>
                 </Container>
-            </Navbar>
+                </Navbar>  
+            
             </div>
         </>
     )
 }
 
+{/* <Navbar collapseOnSelect expand="lg" bg="dark" fixed="top"  variant={"dark"}  >
+                <Container>
+                    <Navbar.Brand href="#home" as={Link} to={"/home"}>E-Book</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link href="#features"as={Link} to={"/home"}>Home</Nav.Link>
+                        {navLink.map((element,index)=>{
+                                    return<Nav.Link href="#pricing" as={Link} to={`/Category/${element}`} key={index} >{element}</Nav.Link>
+                                })}
+                    </Nav>
+                    <Link href="#deets" to={"/Cart"} >
+                        <CartWidget ></CartWidget>
+                    </Link>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+             */}
 
 
-{/* <NavDropdown title="Link" id="navbarScrollingDropdown">
-<Link to={"/Category/Fantasia"}>
-    <NavDropdown.Item >Fantasia</NavDropdown.Item>
-</Link>
-<Link to={"/ItemDetailConteiner/1"}>
-    <NavDropdown.Item href="#action4">  wada  </NavDropdown.Item>
-</Link>
-</NavDropdown> */}
+/*
+<Navbar collapseOnSelect fixed="top" bg="dark" variant={"dark"} expand="lg"  >
+<Container fluid>
+<Navbar.Toggle aria-controls="navbarScroll" />
+<Navbar.Collapse   id="navbarScroll">
+    <Nav
+    className="me-auto my-2 my-lg-0"
+    style={{ maxHeight: "100px" }}
+    navbarScroll
+    >
+    <Nav.Link href="#features" as={Link} to={"/home"}>Home</Nav.Link>
+    {navLink.map((element,index)=>{
+        return<Nav.Link as={Link} to={`/Category/${element}`} key={index} >{element}</Nav.Link>
+    })}
+    </Nav>
+    <Link to={"/Cart"} >
+        <CartWidget ></CartWidget>
+    </Link>
+</Navbar.Collapse>
+</Container>
+</Navbar>  */

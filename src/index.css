@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:rgba(233, 150, 122, 0.452) !important;
+  padding-top: 100px !important;
 }
 
 code {
@@ -26,13 +28,28 @@ code {
   }
 
   .contenedor2{
-    background-color:rgba(233, 150, 122, 0.452);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100vh;
-    align-items: center;
-    justify-items: center; /* ajusta */
+    /* background-color:rgba(233, 150, 122, 0.452); */
+    /* padding: 10% 10% !important; */
+    /* display: grid; */
+    /* grid-template-columns: 1fr; */
+    /* grid-template-rows: 100vh; */
+    /* align-items: center; */
+    /* justify-items: center;  */
+    /* ajusta  */
     
+  }
+
+  .row1{
+
+    width: 80% !important;
+    row-gap: 1rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    margin: auto auto !important;
+    /* padding-top: 3% !important; */
+
   }
 
   .flexColumn{
@@ -53,16 +70,22 @@ code {
     align-content: center !important;
     justify-content: center !important;
     align-items: center !important;
-
-    width: 55rem !important;
-    height: 10rem !important;
-
-
+    /* width: 90% !important; */
+    height: max-content !important;
     background-color: lightblue !important;
-    margin: .5rem 0rem !important;
+    margin: auto!important;
+    row-gap: 1rem !important;
+  }
 
-    
+  @media only screen and (max-width: 600px) {
+    .contenedorCarrito {
+      flex-direction: column !important;
+      width: 80% !important;
+    }
 
+    body{
+      
+    }
   }
 
   .cardBodyCarrito{
@@ -73,4 +96,23 @@ code {
 
 .buttonAdd{
   margin: 0px 8px !important;
+  /* border-radius: 100% !important; */
 }
+
+.tarjeta{
+  display: flex !important;
+}
+
+
+.detalleCont{
+  width: 80% !important;
+    /* row-gap: 1rem !important; */
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important; 
+    padding: 3% !important;
+    margin: auto !important;
+}
+

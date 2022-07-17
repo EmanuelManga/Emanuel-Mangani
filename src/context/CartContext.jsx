@@ -1,4 +1,5 @@
-import {  createContext,useState } from 'react'
+import { createContext, useState } from 'react';
+import toast from 'react-hot-toast';
 export const MiContexto = createContext({});
 
 
@@ -13,8 +14,9 @@ export default function CartContext({children}) {
     const [costoTotal,setCostoTotal] = useState(0)
     const [productosTotal,setProductosTotal] = useState(0)
 
+
     const onAdd = (count) => {
-        alert(`sumaste ${count} al carrito`)
+        toast.success(`sumaste ${count} al carrito`)
     }
     
     const addItem = (item, quantity)=>{
@@ -57,34 +59,14 @@ export default function CartContext({children}) {
         }
     }
 
-    const sumar = (stock,contItem) =>{
-        if(contItem < stock)
-            return(contItem+1);
-        else{
-            alert("Alcansaste Stock maximo")
-            return(contItem)
-        }
-    }
-
-    const restar = (contItem) =>{
-        if(contItem >cantInicial)
-        return(contItem-1);
-    }
-
-    const reset = () =>{
-        return(cantInicial)
-    }
-
     const sumarCarrito = (item)=>{
-        if( 0 < item.stock){
-            let auxId = carrito.findIndex((obj => obj.id === item.id));
+        let auxId = carrito.findIndex((obj => obj.id === item.id));
+        if( 0 < item.stock -  carrito[auxId].cantidad ){
             carrito[auxId].cantidad = carrito[auxId].cantidad + 1;
-            carrito[auxId].stock = carrito[auxId].stock - 1;
-            console.log("despues del state 2 ",carrito)
             setCarrito(carrito)
         }
         else{
-            alert("Alcansaste Stock maximo")
+            toast.error("Alcansaste Stock maximo")
         }
         sumaTotal();
     }
@@ -93,11 +75,10 @@ export default function CartContext({children}) {
         if( 1 < item.cantidad){
             let auxId = carrito.findIndex((obj => obj.id === item.id));
             carrito[auxId].cantidad = carrito[auxId].cantidad - 1;
-            carrito[auxId].stock = carrito[auxId].stock + 1;
             setCarrito(carrito)
         }
         else{
-            alert("error")
+            toast.error("error")
         }
         sumaTotal();
     }
@@ -113,7 +94,8 @@ export default function CartContext({children}) {
     }
 
 
+
     return (
-    <MiContexto.Provider value={{setCarritoVacio,sumaProductos,productosTotal,carritoVacio,carrito,setCarrito,onAdd,cantInicial,isInCart,addItem,clear,removeItem,sumar,restar,reset,sumarCarrito,sumaTotal,costoTotal,restarCarrito}} >{children}</MiContexto.Provider>
+    <MiContexto.Provider value={{setCarritoVacio,sumaProductos,productosTotal,carritoVacio,carrito,setCarrito,onAdd,cantInicial,isInCart,addItem,clear,removeItem,sumarCarrito,sumaTotal,costoTotal,restarCarrito}} >{children}</MiContexto.Provider>
     )
 }

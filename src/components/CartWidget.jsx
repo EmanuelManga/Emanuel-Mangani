@@ -14,7 +14,7 @@ export default function CartWidget() {
     return (
         <InputGroup className='botonCarrito'>
                 <Button variant="outline-secondary" style={{textDecorationLine:"none"}}>
-                <BsCart className='me-2'></BsCart>
+                <BsCart className='me-2' ></BsCart>
                 {sumaProductos()}
                 {/* {productosTotal} */}
                 </Button>
