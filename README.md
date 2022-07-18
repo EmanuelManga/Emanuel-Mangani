@@ -6,7 +6,7 @@ Este repositorio contiene el proyecto desarrollado durante el curso de React JS 
 
 La aplicación consiste en un ecommerce en el cual se puede filtrar los productos de acuerdo a categorías, y acceder a ver el detalle de cada producto. Los mismos pueden ser agregados al carrito para luego completar un formulario simulando un proceso de compra completo.
 
-Tanto el listado de categorías, como los productos y las órdenes generadas se almacenan en Firebase.
+Tanto el listado de productos como de órdenes generadas se almacenan en Firebase.
 
 Puede visitarse el deploy del proyecto en https://librosecomers.web.app/
 

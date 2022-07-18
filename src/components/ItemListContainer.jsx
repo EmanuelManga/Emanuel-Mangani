@@ -18,13 +18,13 @@ export default function ItemListContainer() {
     const [error,setError]= useState(false);
     const [resultado,setResultado]= useState([]);
 
+    const collecion = 'libros';
+    const db = getFirestore();
+    const collecionDeProductos = collection(db,collecion)
     
     useEffect(()=>{
 
 
-        const collecion = 'libros';
-        const db = getFirestore();
-        const collecionDeProductos = collection(db,collecion)
 
         if(id){
             

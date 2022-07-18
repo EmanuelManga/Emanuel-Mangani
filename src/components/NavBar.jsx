@@ -1,25 +1,23 @@
-import React from 'react'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button,Container} from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import Nosotros from "./Nosotros";
-import Home from "./Home";
-import Sucursales from "./Sucursales";
 import CartWidget from "./CartWidget";
-import { useState } from 'react';
-import { useEffect } from 'react';
-import Cart from './Cart';
 
 
 export default function NavBar() {
 
+
     const [navLink, setNavLink] = useState([]);
+
+
 
     useEffect(()=>{
         fetch('https://my-json-server.typicode.com/EmanuelManga/JsonLibros/lista')
-        .then(respuesta => respuesta.json())
+        .then(respuesta => respuesta.json() )
         .then(parsedArray => parsedArray.map(x => x.categoria))
         .then(uniqueArray => setNavLink([...new Set(uniqueArray)]))
-    })
+    },[])
+
 
 
     return (

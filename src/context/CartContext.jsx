@@ -31,7 +31,7 @@ export default function CartContext({children}) {
             setCarrito([...carrito,item])
         }
         sumaTotal();
-        console.log("antes del state",carrito)
+        // console.log("antes del state",carrito)
         setCarritoVacio(false)
         
     }
@@ -50,7 +50,7 @@ export default function CartContext({children}) {
 
     const isInCart = (item) =>{
         const buscar = carrito.find(obj=>obj.id===item.id)
-        console.log("isincart",buscar)
+        // console.log("isincart",buscar)
         if (buscar === undefined){
             return false
         }

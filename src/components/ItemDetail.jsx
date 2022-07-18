@@ -86,14 +86,13 @@ export default function ItemDetail({itemDet,handelerStock,error,loading}) {
         <>
         <div >
         <div className='detalleCont' style={{ backgroundColor: 'lightblue' }}>
-            <div  style={{width:"40%",display:"flex"}}>
-        <Card.Img style={{margin:"auto",padding:"3%" }} src= {itemDet.img}  />
+            <div className='imgItemDet' style={{display:"flex"}}>
+        <Card.Img  style={{padding:"3%"}} src= {itemDet.img}  />
             </div>
-        <Card.Body >
+        <Card.Body className='descItemDet'  >
             <Card.Title>{itemDet.nombre}</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            {itemDet.descripcion}
             </Card.Text>
             <Card.Text>${itemDet.precio}</Card.Text>
             <ItemCount cantInicial={cantInicial} agregarValido={agregarValido} setContItem={setContItem} contItem={contItem} agregarCarrito={agregarCarrito} reset={reset} restar={restar} sumar={sumar} itemDet={itemDet} handelerStock={handelerStock} sumarValido={sumarValido} ></ItemCount>
@@ -118,4 +117,5 @@ export default function ItemDetail({itemDet,handelerStock,error,loading}) {
         </> 
     )
 }
+
 

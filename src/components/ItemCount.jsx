@@ -12,7 +12,7 @@ export default function ItemCount({cantInicial,agregarValido,setContItem,itemDet
     return (
         <>
                     <Card.Text>Stock: {itemDet.stock}</Card.Text>
-        <div className='hola' style={{display:"flex",flexDirection:"column",}}>
+        <div className='itemContCont' style={{display:"flex",flexDirection:"column",}}>
                     <div style={{display:"flex", margin:"auto",alignItems:"baseline"}}>
                     <Button variant="danger" className='me-2 buttonSub' disabled={contItem <= 1 || !contItem? true : false} onClick ={()=>setContItem(restar(contItem))}> - </Button>
                     <Card.Text>{contItem ? contItem : cantInicial }</Card.Text>
